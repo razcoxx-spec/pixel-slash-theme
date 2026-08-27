@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SKINZ-2000 // PHOTO SKIN MACHINE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Funky, Y2K & Retro Laptop Typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=VT323&family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="desk-surface">
+
+    <!-- ════════ RETRO LAPTOP / SKINZ-2000 CHASSIS ════════ -->
+    <div class="laptop-shell">
+      
+      <!-- Laptop Top Bezel -->
+      <div class="laptop-top-bezel">
+        <div class="bezel-screw"></div>
+        <div class="bezel-center">
+          <div class="bezel-cam"></div>
+          <div class="bezel-mic"></div>
+          <div class="laptop-badge">SKINZ-2000 // PHOTO SKIN MACHINE</div>
+        </div>
+        <div class="bezel-screw"></div>
+      </div>
+
+      <!-- Laptop Screen Well -->
+      <div class="laptop-screen" id="laptopScreen">
+        
+        <!-- Optional CRT Scanline Overlay -->
+        <div class="crt-overlay" id="crtOverlay"></div>
+
+        <!-- Retro OS Window Container -->
+        <div class="os-window">
+
+          <!-- Window Title Bar -->
+          <div class="window-titlebar">
+            <div class="titlebar-left">
+              <span class="os-icon">💽</span>
+              <span class="window-title">SKINZ2000.EXE — DARKROOM &amp; SCREEN PLAYER</span>
+            </div>
+            <div class="titlebar-center">
+              <span class="skinz-lamps">
+                <i class="skinz-lamp skinz-lamp-red"></i>
+                <i class="skinz-lamp skinz-lamp-green"></i>
+              </span>
+              <span class="statusbar-ready">READY<i class="led-pulse"></i></span>
+            </div>
+            <div class="window-controls">
+              <button class="win-btn" title="Minimize">_</button>
+              <button class="win-btn" title="Maximize">□</button>
+              <button class="win-btn win-close" title="Close">✕</button>
+            </div>
+          </div>
+
+          <!-- Main Work Area -->
+          <div class="app-body">
+
+            <!-- Funky Header Banner -->
+            <header class="funky-header">
+              <div class="funky-stickers">
+                <span class="sticker sticker-neon">★ 12 SKINS LOADED ★</span>
+                <span class="sticker sticker-hologram">INSTANT GPU PASS</span>
+              </div>
+              <h1 class="funky-title">SKINZ // 2000</h1>
+              <p class="funky-subtitle">PRINT, SCREEN &amp; DARKROOM PHOTO PLAYER</p>
+            </header>
+
+            <!-- Upload Section -->
+            <section class="upload-section" id="uploadSection">
+              <div class="upload-zone" id="uploadZone">
+                <div class="upload-visual">
+                  <div class="retro-disk-icon">
+                    <span class="disk-emoji">💽</span>
+                  </div>
+                  <h2 class="upload-title">LOAD SOURCE PHOTOGRAPH</h2>
+                  <p class="upload-desc">DROP ANY JPG / PNG HERE OR <label class="browse-btn" for="fileInput">[BROWSE FILES]</label></p>
+                  <div class="specs-badge-row">
+                    <span class="spec-tag">100% CLIENT-SIDE</span>
+                    <span class="spec-tag">DARKROOM PRINTS</span>
+                    <span class="spec-tag">FULL RESOLUTION</span>
+                  </div>
+                </div>
+                <input type="file" id="fileInput" accept="image/*" />
+              </div>
+            </section>
+
+            <!-- Workspace Section -->
+            <section class="workspace" id="workspace" hidden>
+
+              <!-- Preview Monitors Row -->
+              <div class="preview-row">
+                <!-- Source Monitor -->
+                <div class="preview-panel">
+                  <div class="panel-header">
+                    <div class="panel-header-left">
+                      <span class="retro-chip">RAW</span>
+                      <span class="panel-title">SOURCE_IMAGE.JPG</span>
+                    </div>
+                    <span class="panel-status">[ORIGINAL]</span>
+                  </div>
+                  <div class="canvas-wrap">
+                    <canvas id="originalCanvas"></canvas>
+                  </div>
+                </div>
+
+                <!-- Processed Skin Monitor -->
+                <div class="preview-panel result-panel">
+                  <div class="panel-header">
+                    <div class="panel-header-left">
+                      <span class="retro-chip live-chip" id="panelTypeTag">SKIN</span>
+                      <span class="panel-title" id="resultLabel">ACTIVE SKIN</span>
+                    </div>
+                    <span class="skin-tag-pill" id="skinCategoryTag">PRINT</span>
+                  </div>
+                  
+                  <div class="canvas-wrap" id="resultWrap">
+                    <canvas id="resultCanvas"></canvas>
+
+                    <!-- Funky Editorial Reference Badge Overlay -->
+                    <div class="editorial-badge" id="editorialBadge" hidden>
+                      <span id="editorialBadgeText">X-RAY SCAN</span>
+                    </div>
+
+                    <!-- Loading / Placeholder Overlays -->
+                    <div class="overlay loading-overlay" id="loadingOverlay" hidden>
+                      <div class="pixel-spinner"></div>
+                      <p class="loading-text">APPLYING PHOTO EMULSION...</p>
+                    </div>
+
+                    <div class="overlay placeholder-overlay" id="placeholderOverlay">
+                      <p class="pixel-text">CLICK A PHOTO SKIN BELOW</p>
+                    </div>
+                  </div>
+
+                  <!-- Quick Settings Bar -->
+                  <div class="controls-bar">
+                    <button id="toggleBadgeBtn" class="retro-btn active">🏷️ TITLE BADGE: ON</button>
+                    <button id="toggleCrtBtn" class="retro-btn">📺 CRT SCANLINES: OFF</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Skins Bank / Grid -->
+              <div class="themes-section">
+                <div class="themes-header">
+                  <div class="themes-header-left">
+                    <span class="themes-label">▶ PHOTO SKIN BANK</span>
+                    <span class="themes-counter">[12 SKINS AVAILABLE]</span>
+                  </div>
+                  <!-- Category Filters -->
+                  <div class="category-filter-row" id="categoryFilterRow">
+                    <button class="filter-tab active" data-filter="all">ALL</button>
+                    <button class="filter-tab" data-filter="DARKROOM">DARKROOM</button>
+                    <button class="filter-tab" data-filter="PRINT">PRINT</button>
+                    <button class="filter-tab" data-filter="GLITCH">GLITCH</button>
+                    <button class="filter-tab" data-filter="TEXTILE">TEXTILE</button>
+                    <button class="filter-tab" data-filter="SCREEN">SCREEN</button>
+                    <button class="filter-tab" data-filter="INFRARED">INFRARED</button>
+                  </div>
+                </div>
+                <div class="themes-grid" id="themesGrid"></div>
+              </div>
+
+              <!-- Retro Actions Row -->
+              <div class="actions-row">
+                <button id="downloadBtn" class="btn btn-primary" disabled>
+                  <span class="btn-icon">💾</span> EXPORT HIGH-RES PNG
+                </button>
+                <button id="resetBtn" class="btn btn-ghost">
+                  <span class="btn-icon">⏏</span> EJECT / NEW PHOTO
+                </button>
+              </div>
+
+            </section>
+
+          </div><!-- /.app-body -->
+
+          <!-- Retro Taskbar / Status Bar -->
+          <footer class="os-taskbar">
+            <div class="taskbar-start">
+              <span class="start-logo">❖</span>
+              <span class="start-text">SKINZ</span>
+            </div>
+            <div class="taskbar-tasks">
+              <span class="task-tab active">◈ SKIN_PROCESSOR_V2</span>
+              <span class="task-tab">⚡ DIRECT_CANVAS_RENDER</span>
+            </div>
+            <div class="taskbar-tray">
+              <span class="tray-spec">PIPELINE: FAST</span>
+              <span class="tray-divider">|</span>
+              <span class="tray-spec">12 SKINS LOADED</span>
+              <span class="tray-divider">|</span>
+              <span class="tray-clock" id="liveClock">12:00 PM</span>
+            </div>
+          </footer>
+
+        </div><!-- /.os-window -->
+      </div><!-- /.laptop-screen -->
+
+      <!-- Laptop Bottom Chassis Hinge -->
+      <div class="laptop-bottom-hinge">
+        <div class="hinge-block"></div>
+        <div class="laptop-brand-plate">★ HIGGSFIELD SKINZ-2000 &bull; COLOR-MATCH ENGINE &bull; HI-DEF PASS ★</div>
+        <div class="hinge-block"></div>
+      </div>
+
+    </div><!-- /.laptop-shell -->
+
+  </div><!-- /.desk-surface -->
+
+  <script src="effects.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
